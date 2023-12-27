@@ -9,25 +9,25 @@ Coordinate::Coordinate(const Decimal timeCoordinate, const Decimal xCoordinate,
 }
 
 const Coordinate Coordinate::operator+(const Coordinate& addedCoordinate) const {
-	Coordinate coordinateSum; // default constructed to 0
+	Coordinate coordinateSum = *this; // copy current Coordinate
 	for (unsigned int index = 0; index < size; index++) {
-		coordinateSum[index] = this->operator[](index) + addedCoordinate[index];
+		coordinateSum[index] +=  addedCoordinate[index];
 	}
 	return coordinateSum;
 }
 
 const Coordinate Coordinate::operator-(const Coordinate& subtractedCoordinate) const {
-	Coordinate coordinateDifference; // default constructed to 0
+	Coordinate coordinateDifference = *this; // copy current Coordinate
 	for (unsigned int index = 0; index < size; index++) {
-		coordinateDifference[index] = this->operator[](index) - subtractedCoordinate[index];
+		coordinateDifference[index] -= subtractedCoordinate[index];
 	}
 	return coordinateDifference;
 }
 
 const Coordinate Coordinate::operator*(const Decimal scaleFactor) const {
-	Coordinate scaledCopyOfThisCoordinate;
+	Coordinate scaledCopyOfThisCoordinate = *this; // copy current coordinate
 	for (unsigned int index = 0; index < size; index++) {
-		scaledCopyOfThisCoordinate[index] = scaleFactor * this->operator[](index);
+		scaledCopyOfThisCoordinate[index] *= scaleFactor;
 	}
 	return scaledCopyOfThisCoordinate;
 }

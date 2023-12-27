@@ -2,7 +2,7 @@
 #include "Decimal.h"
 #include "Coordinate.h"
 
-// This object extends the Coordinate class to store positions
+// This object extends the Coordinate class to store positions, with named component accessors.
 
 struct Position : Coordinate {
 	Position() : Coordinate() {}

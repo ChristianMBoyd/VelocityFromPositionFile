@@ -1,12 +1,12 @@
 #pragma once
-#include "Decimal.h"
 #include <array>
+#include "Decimal.h"
 
 /*
-This is the basic object for storing and manipulating coordinates.  Values are stored according
-to the typedef Decimal.  Basic vector algebra is included to simplify finite-difference and linear
-interpolation calculations.  When deferring to the base constructor here, the coordinates are
-organized as (t,x,y,z)<->(0,1,2,3).
+This is the basic object for storing and manipulating coordinate components.  Values are stored 
+according to the typedef Decimal.  Basic vector algebra is included to simplify finite-difference
+and linear interpolation calculations.  When deferring to the base constructor here, the 
+coordinates are organized as (t,x,y,z)<->(0,1,2,3).
 */
 
 class Coordinate {

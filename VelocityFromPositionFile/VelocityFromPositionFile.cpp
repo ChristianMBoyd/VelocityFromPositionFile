@@ -1,10 +1,11 @@
 #include <iostream>
 #include "String.h"
+#include "Decimal.h"
+#include "Position.h"
 
 void holdOutputWindow();
 
 int main() {
-	std::cout << "Hello World!\n";
 
 	holdOutputWindow();
 	return 0;

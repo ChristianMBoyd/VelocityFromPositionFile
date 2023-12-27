@@ -1,11 +1,7 @@
 #pragma once
 #include <vector>
 
-/*
-This is the basic object used to store coordinate data, which is specified by the template 
-parameter.  Only essential operations are provided, with inherited classes defining their own 
-useful constructors.
-*/
+// This template provides the base structure to store coordinates.
 
 template<class coordinate>
 class CoordinateData {
