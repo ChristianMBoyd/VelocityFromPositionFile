@@ -139,9 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="VelocityFromPositionFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="CoordinateData.h" />
+    <ClInclude Include="Decimal.h" />
+    <ClInclude Include="Position.h" />
+    <ClInclude Include="PositionData.h" />
     <ClInclude Include="String.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
