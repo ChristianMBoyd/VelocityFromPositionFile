@@ -1,25 +1,19 @@
 #include "pch.h" // connect to Google test tool
 #include "../Coordinate.h"
 #include "../Position.h"
-#include "RandomGenerator.h"
+#include "TestFunctions.h"
 
 /*
 Currently, the coordinate operations are being tested via the inherited class Position. Since 
 Position only extends named accessors, the only distinction is implicitly testing these accessors.
 */
 
-namespace { // local functions and names
-
-	// initialize random floats
-	const int minPosition = -10000;
-	const int maxPosition = 10000;
-	RandomGenerator positionGenerator(minPosition, maxPosition);
-
+namespace {
 	TEST(CoordinateTests, TestConstructor) {
-		const float time = std::abs(positionGenerator.randomFloat());
-		const float x = positionGenerator.randomFloat();
-		const float y = positionGenerator.randomFloat();
-		const float z = positionGenerator.randomFloat();
+		const float time = TestFunctions::randomTimeValue();
+		const float x = TestFunctions::randomPositionValue();
+		const float y = TestFunctions::randomPositionValue();
+		const float z = TestFunctions::randomPositionValue();
 		Position position(time, x, y, z);
 		EXPECT_FLOAT_EQ(position.timeInSeconds(), time) << "assigned " 
 			<< time << " returned " << position.timeInSeconds();
@@ -31,18 +25,9 @@ namespace { // local functions and names
 			<< z << " returned " << position.zInMeters();
 	}
 
-	// at this point, the constructor passed its tests
-	Position randomPosition() {
-		float time = std::abs(positionGenerator.randomFloat());
-		float x = positionGenerator.randomFloat();
-		float y = positionGenerator.randomFloat();
-		float z = positionGenerator.randomFloat();
-		return Position(time, x, y, z);
-	}
-
 	TEST(CoordinateTests, TestAddition) {
-		const Position firstPosition = randomPosition();
-		const Position secondPosition = randomPosition();
+		const Position firstPosition = TestFunctions::randomPosition();
+		const Position secondPosition = TestFunctions::randomPosition();
 		const Position sumPosition = firstPosition + secondPosition;
 		float sum = firstPosition.timeInSeconds() + secondPosition.timeInSeconds();
 		EXPECT_FLOAT_EQ(sumPosition.timeInSeconds(), sum) << "Evaluated "
@@ -63,8 +48,8 @@ namespace { // local functions and names
 	}
 
 	TEST(CoordinateTests, TestSubtraction) {
-		const Position firstPosition = randomPosition();
-		const Position secondPosition = randomPosition();
+		const Position firstPosition = TestFunctions::randomPosition();
+		const Position secondPosition = TestFunctions::randomPosition();
 		const Position differencePosition = firstPosition - secondPosition;
 		float difference = firstPosition.timeInSeconds() - secondPosition.timeInSeconds();
 		EXPECT_FLOAT_EQ(differencePosition.timeInSeconds(), difference) << "Evaluated "
@@ -85,8 +70,8 @@ namespace { // local functions and names
 	}
 
 	TEST(CoordinateTests, TestScalarMultiplication) {
-		const Position position = randomPosition();
-		const float scaleFactor = positionGenerator.randomFloat();
+		const Position position = TestFunctions::randomPosition();
+		const float scaleFactor = TestFunctions::randomPositionValue();
 		const Position scaledPosition = scaleFactor * position;
 		float product = scaleFactor * position.timeInSeconds();
 		EXPECT_FLOAT_EQ(scaledPosition.timeInSeconds(), product) << "Evaluated "

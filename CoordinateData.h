@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+	
 // This template provides the base structure to store coordinates.
 
 template<class coordinate>
@@ -8,10 +8,9 @@ class CoordinateData {
 private:
 	std::vector<coordinate> coordinateData;
 
-protected:
+public:
 	CoordinateData() : coordinateData() {}
 
-public:
 	coordinate& operator[](int index) { return coordinateData[index]; }
 	const coordinate& operator[](int index) const { return coordinateData[index]; }
 
